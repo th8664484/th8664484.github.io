@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/0002.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="transparent">
+  <meta name="author" content="TONG HUI">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="认识链表  目前正在 labuladong的网站下学习数据结构和算法 ———— 链表。通过博主的介绍让我感觉算法没有以前难学了。 博客  合并两个有序链表    123456789101112131415161718192021222324252627ListNode mergeTwoLists(ListNode l1,ListNode l2)&amp;#123;    &#x2F;&#x2F;虚拟头节点   哨兵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表算法技巧">
+<meta property="og:url" content="https://th8664484.github.io/2023/02/08/%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="时光屋">
+<meta property="og:description" content="认识链表  目前正在 labuladong的网站下学习数据结构和算法 ———— 链表。通过博主的介绍让我感觉算法没有以前难学了。 博客  合并两个有序链表    123456789101112131415161718192021222324252627ListNode mergeTwoLists(ListNode l1,ListNode l2)&amp;#123;    &#x2F;&#x2F;虚拟头节点   哨兵">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://th8664484.github.io/img/sjsm.jpg">
+<meta property="article:published_time" content="2023-02-08T14:38:20.000Z">
+<meta property="article:modified_time" content="2023-02-10T14:13:52.605Z">
+<meta property="article:author" content="TONG HUI">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://th8664484.github.io/img/sjsm.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>链表算法技巧 - 时光屋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"th8664484.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"wSBIsiKm8TC5hJSiBlsCuLOU-MdYXbMMI","app_key":"kPBaHyJyPQp1NQuVTIFXgFUu","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>时光屋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/jsbig.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+          <div class="h1">
+              <strong style='font-family:华文行楷'>时光屋</strong>
+          </div>
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="链表算法技巧"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-08 22:38" pubdate>
+          2023年2月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">链表算法技巧</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="markdown-body">
+
+<p class="note note-danger"> <em>认识链表</em></p>
+
+<p>目前正在 <span class="label label-primary">labuladong</span>的网站下学习数据结构和算法 <strong>————</strong> 链表。<br>通过博主的介绍让我感觉算法没有以前难学了。</p>
+<p><a class="btn" target="_blank" rel="noopener" href="https://labuladong.github.io/algo/">博客</a></p>
+<p class="note note-danger"> <em>合并两个有序链表</em> </p>
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/title.jpg" srcset="/img/loading.gif" lazyload>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java">ListNode <span class="hljs-title function_">mergeTwoLists</span><span class="hljs-params">(ListNode l1,ListNode l2)</span>&#123;<br>    <span class="hljs-comment">//虚拟头节点   哨兵</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>),p = dummy;<br>    <span class="hljs-comment">//链表头指向 p1 , p2</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> l1,p2 = l2;<br>    <br>    <span class="hljs-comment">//判断链表是否遍历完成</span><br>    <span class="hljs-keyword">while</span>(p1 != <span class="hljs-literal">null</span> &amp;&amp; p2 != <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-comment">//比较 p1 p2 的值 ，将小的值接到 p 的下边</span><br>        <span class="hljs-keyword">if</span>(p1.val &gt; p2.val)&#123;<br>            p.next = p2;<br>            p2 = p2.next;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            p.next = p1;<br>            p1 = p1.next;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-comment">//最后判断链表是否有剩余,剩余的直接放到 P 后边</span><br>    <span class="hljs-keyword">if</span>(p1 != <span class="hljs-literal">null</span>)&#123;<br>        p.next = p1;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(p2 != <span class="hljs-literal">null</span>)&#123;<br>        p.next = p2;<br>    &#125;<br>    <span class="hljs-keyword">return</span> dummy.next;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>while 循环每次比较 <code>p1</code> 和 <code>p2</code> 的大小，把较小的节点接到结果链表<br><img src="https://labuladong.github.io/algo/images/%E9%93%BE%E8%A1%A8%E6%8A%80%E5%B7%A7/1.gif" srcset="/img/loading.gif" lazyload></p>
+<p class="note note-danger"> <em>链表的分解</em> </p>
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/title4.jpg" srcset="/img/loading.gif" lazyload>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java">ListNode <span class="hljs-title function_">parition</span><span class="hljs-params">(ListNode head,<span class="hljs-type">int</span> x)</span>&#123;<br>    <span class="hljs-comment">//存放小于 x 的链表的虚拟头节点</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>    <span class="hljs-comment">//存放大于 x 的链表的虚拟头节点</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>    <span class="hljs-comment">//p1 p2 指针负责生成结果链表</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> dummy1,p2 = dummy2;<br>    <span class="hljs-comment">//p 负责遍历原链表，类似合并两个有序链表的逻辑</span><br>    <span class="hljs-comment">//这里将一个链表分解成两个链表</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-keyword">while</span>(p != <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">if</span>(p.val &gt;= x)&#123;<br>            p2.next = p;<br>            p2 = p2.next;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            p1.next = p;<br>            p1 = p1.next;<br>        &#125;<br>        <span class="hljs-comment">//断开原链表中的每个节点的next指针</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> p.next;<br>        p.next = <span class="hljs-literal">null</span>;<br>        p = temp;<br>    &#125; <br>    <span class="hljs-comment">//连接两个链表</span><br>    p1.next = dummy2.next;<br>    <span class="hljs-keyword">return</span> dummy1.next;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p class="note note-danger"> <em>合并 <span class="label label-primary">k</span> 个有序链表</em> </p>
+
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/title2.jpg" srcset="/img/loading.gif" lazyload>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java">ListNode <span class="hljs-title function_">mergeKLists</span><span class="hljs-params">(ListNode[] lists)</span>&#123;<br>    <span class="hljs-keyword">if</span>(lists.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-comment">//虚拟头节点</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> dummy;<br>    <span class="hljs-comment">//优先级队列 ，最小堆</span><br>    PrioriyQueue&lt;ListNode&gt; pq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PrioriyQueue</span>&lt;&gt;(<br>        lists.length,(a,b)-&gt;(a.val - b.val)<br>    );<br>    <br>    <span class="hljs-comment">//将K个链表的头节点加入最小堆</span><br>    <span class="hljs-keyword">for</span>(ListNode head : lists)&#123;<br>        <span class="hljs-keyword">if</span>(head != <span class="hljs-literal">null</span>)<br>            pq.add(head);<br>    &#125;<br>    <br>    <span class="hljs-keyword">while</span>(!pq.isEmpty)&#123;<br>        <span class="hljs-comment">//获取最小节点，接到结果链表中</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> pq.poll();<br>        p.next = node;<br>        <span class="hljs-keyword">if</span>(node.next != <span class="hljs-literal">null</span>)&#123;<br>            pq.add(node.next);<br>        &#125;<br>        <span class="hljs-comment">//p 指针不断向前</span><br>        p = p.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> dummy.next;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p class="note note-danger"> <em>寻找单链表的倒数第 <span class="label label-primary">k</span> 个节点</em> </p>
+
+<p>首先，我们先让一个指针 <code>p1</code> 指向链表的头节点 <code>head</code>，然后走 <code>k</code> 步：</p>
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/1.jpeg" srcset="/img/loading.gif" lazyload>
+
+<p>现在的  <code>p1</code> ，只要再走  <code>n - k</code> 步，就能走到链表末尾的空指针</p>
+<p>趁这个时候，再用一个指针 <code>p2</code> 指向链表头节点 <code>head</code>：</p>
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/2.jpeg" srcset="/img/loading.gif" lazyload>
+
+<p>接下来就很显然了，让 <code>p1</code> 和 <code>p2</code> 同时向前走，<code>p1</code> 走到链表末尾的空指针时前进了 <code>n - k</code> 步，<code>p2</code> 也从 head 开始前进了 <code>n - k</code> 步，停留在第 <code>n - k + 1</code> 个节点上，即恰好停链表的倒数第 <code>k</code> 个节点上：</p>
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/3.jpeg" srcset="/img/loading.gif" lazyload>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java">ListNode <span class="hljs-title function_">findFromEnd</span><span class="hljs-params">(ListNode head,<span class="hljs-type">int</span> k)</span>&#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-comment">//p1 先走 K 步</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++)&#123;<br>        p1 = p1.next;<br>    &#125;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p2</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-comment">// p1 p2 同时走 n-k 步</span><br>    <span class="hljs-keyword">while</span>(p1 != <span class="hljs-literal">null</span>)&#123;<br>        p2 = p2.next;<br>        p1 = p1.next;<br>    &#125;<br>    <span class="hljs-comment">// p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点</span><br>    <span class="hljs-keyword">return</span> p2;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>删除链表倒数第 <code>N</code> 个节点</strong><br><img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/title3.jpg" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">removeNthFromEnd</span><span class="hljs-params">(ListNode head ,<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-comment">// 虚拟头</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>    dummy.next = head;<br>    <br>     <span class="hljs-comment">// 删除倒数第 n 个，要先找倒数第 n + 1 个节点</span><br>     <span class="hljs-type">ListNode</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> findFromEnd(dummy , n+<span class="hljs-number">1</span>);<br>     <br>     <span class="hljs-comment">//删掉倒数第 n 个节点</span><br>    x.next = x.next.next;<br>    <span class="hljs-keyword">return</span> dummy.next;<br>&#125;<br><span class="hljs-keyword">private</span> ListNode <span class="hljs-title function_">findFromEnd</span><span class="hljs-params">(ListNode head,<span class="hljs-type">int</span> k)</span>&#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> head;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++)&#123;<br>        p1 = p1.next;<br>    &#125;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p2</span> <span class="hljs-operator">=</span> head;<br>    <br>    <span class="hljs-keyword">while</span>(p1 != <span class="hljs-literal">null</span>)&#123;<br>        p2 = p2.next;<br>        p1 = p1.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p2;   <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p class="note note-danger"> <em>寻找单链表的中点</em> </p>
+
+<p>用<code>快慢指针</code>技巧：<br>我们让两个指针 <code>slow</code> 和 <code>fast</code> 分别指向链表头结点 head。<br>每当慢指针 <code>slow</code> 前进一步，快指针 <code>fast</code> 就前进两步，这样，当 <code>fast</code> 走到链表末尾时，<code>slow </code>就指向了链表中点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">ListNode <span class="hljs-title function_">middleNode</span><span class="hljs-params">(ListNode head)</span>&#123;<br>    <span class="hljs-comment">// 快慢指针初始化指向 head</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> head,fast = head;<br>    <span class="hljs-keyword">while</span>(fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-comment">// 慢指针走一步，快指针走两步</span><br>        slow = slow.next;<br>        fast = fast.next.next;<br>    &#125;<br>    <span class="hljs-comment">// 慢指针指向中点</span><br>    <span class="hljs-keyword">return</span> slow;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果链表长度为偶数，也就是说中点有两个的时候，我们这个解法返回的节点是靠后的那个节点。</p>
+<p class="note note-danger"> <em>判断单链表是否包含环并找出环起点</em> </p>
+
+<p>用<code>快慢指针</code>技巧：<br>每当慢指针 <code>slow</code> 前进一步，快指针 <code>fast</code> 就前进两步。<br>如果 <code>fast</code> 最终遇到空指针，说明链表中没有环；如果 <code>fast</code> 最终和 <code>slow</code> 相遇，那肯定是 <code>fast</code> 超过了 <code>slow</code> 一圈，说明链表中含有环。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">boolean</span> <span class="hljs-title function_">hasCycle</span><span class="hljs-params">(ListNode head)</span>&#123;<br>    <span class="hljs-comment">// 快慢指针初始化指向 head</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> head, fast = head;<br>    <span class="hljs-keyword">while</span>(fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>)&#123;<br>        slow = slow.next;<br>        fast = fast.next.next;<br>        <br>        <span class="hljs-keyword">if</span>(slow == fast)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>如果链表中含有环，如何计算这个环的起点</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java">ListNode <span class="hljs-title function_">detectCycle</span><span class="hljs-params">(ListNode head)</span>&#123;<br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">fast</span> <span class="hljs-operator">=</span>head ,slow = head;<br>    <span class="hljs-keyword">while</span> (fast != <span class="hljs-literal">null</span> &amp;&amp; fast.next != <span class="hljs-literal">null</span>)&#123;<br>        fast = fast.next.next;<br>        slow = slow.next;<br>        <span class="hljs-keyword">if</span>(fast == slow )&#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">if</span>(fast == <span class="hljs-literal">null</span> || fast.next == <span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 重新指向头结点</span><br>    slow = head;<br>    <span class="hljs-comment">// 快慢指针同步前进，相交点就是环起点</span><br>    <span class="hljs-keyword">while</span>(slow != fast)&#123;<br>        fast = fast.next;<br>        slow = slow.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> slow;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>快慢指针相遇时，慢指针 <code>slow</code> 走了 <code>k</code> 步，那么快指针 <code>fast</code> 一定走了 <code>2k</code> 步：<br><img src="https://labuladong.github.io/algo/images/%e5%8f%8c%e6%8c%87%e9%92%88/3.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p><code>fast</code> 一定比 <code>slow</code> 多走了 <code>k</code> 步，这多走的 <code>k</code> 步其实就是 <code>fast</code> 指针在环里转圈圈，所以 <code>k</code> 的值就是环长度的「整数倍」。</p>
+<p>假设相遇点距环的起点的距离为 <code>m</code>，那么结合上图的 <code>slow</code> 指针，环的起点距头结点 <code>head</code> 的距离为 <code>k - m</code>，也就是说如果从 <code>head</code> 前进 <code>k - m</code> 步就能到达环起点。</p>
+<p>巧的是，如果从相遇点继续前进 <code>k - m</code> 步，也恰好到达环起点。因为结合上图的 <code>fast</code> 指针，从相遇点开始走k步可以转回到相遇点，那走 <code>k - m</code> 步肯定就走到环起点了：<br><img src="https://labuladong.github.io/algo/images/%e5%8f%8c%e6%8c%87%e9%92%88/2.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>所以，只要我们把快慢指针中的任一个重新指向 <code>head</code>，然后两个指针同速前进，<code>k - m</code> 步后一定会相遇，相遇之处就是环的起点了。</p>
+<p class="note note-danger"> <em>判断两个单链表是否相交并找出交点</em> </p>
+两个链表的头结点 headA 和 headB，这两个链表可能存在相交。
+如果相交，你的算法应该返回相交的那个节点；如果没相交，则返回 null。
+<img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/4.png" srcset="/img/loading.gif" lazyload>
+
+<p><strong>只使用两个指针，思路：</strong><br><img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/5.jpeg" srcset="/img/loading.gif" lazyload><br><img src="https://labuladong.github.io/algo/images/%e9%93%be%e8%a1%a8%e6%8a%80%e5%b7%a7/6.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>解决这个问题的关键是，通过某些方式，让 <code>p1</code> 和 <code>p2</code> 能够同时到达相交节点 <code>c1</code>。</p>
+<p>所以，我们可以让 <code>p1</code> 遍历完链表 <code>A</code> 之后开始遍历链表 <code>B</code>，让 <code>p2</code> 遍历完链表 <code>B</code> 之后开始遍历链表 <code>A</code>，这样相当于「逻辑上」两条链表接在了一起。</p>
+<p>如果这样进行拼接，就可以让 <code>p1</code> 和 <code>p2</code> 同时进入公共部分，也就是同时到达相交节点 <code>c1</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java">方法一：<br>ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA,ListNode headB)</span>&#123;<br>    <span class="hljs-comment">// p1 指向 A 链表头结点，p2 指向 B 链表头结点</span><br>    <span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> headA , p2 = headB;<br>    <span class="hljs-keyword">while</span>(p1 != p2)&#123;<br>        <span class="hljs-comment">// p1 走一步，如果走到 A 链表末尾，转到 B 链表</span><br>        <span class="hljs-keyword">if</span>(p1 == <span class="hljs-literal">null</span> ) p1 = headB;<br>        <span class="hljs-keyword">else</span>            p1 = p1.next;<br>        <br>        <span class="hljs-comment">// p2 走一步，如果走到 B 链表末尾，转到 A 链表</span><br>        <span class="hljs-keyword">if</span>(p2 == <span class="hljs-literal">null</span>) p2 = headA;<br>        <span class="hljs-keyword">else</span>           p2 = p2.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p1;<br>&#125;<br>方法二：<br>ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA,ListNode headB)</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">lenA</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, lenB = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//计算两条链表的长度</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">ListNode</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> headA;p1!=<span class="hljs-literal">null</span>;p1=p1.next)&#123;<br>        lenA++;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">ListNode</span> <span class="hljs-variable">p2</span> <span class="hljs-operator">=</span> headB;p2!=<span class="hljs-literal">null</span>;p2=p2.next)&#123;<br>        lenB++;<br>    &#125;<br>    <span class="hljs-comment">//让 p1 和 p2 到达尾部的距离相同</span><br>    ListNode p1=headA,p2=headB;<br>    is(lenA &gt;lenB)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;lenA-lenB;i++)&#123;<br>            p1 = p1.next; <br>        &#125;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;lenB-lenA;i++)&#123;<br>            p2 = p2.next;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 看两个指针是否会相同，p1 == p2 时有两种情况：</span><br>    <span class="hljs-comment">// 1、要么是两条链表不相交，他俩同时走到尾部空指针</span><br>    <span class="hljs-comment">// 2、要么是两条链表相交，他俩走到两条链表的相交点</span><br>    <span class="hljs-keyword">while</span>(p1 != p2)&#123;<br>        p1 = p1.next;<br>        p2 = p2.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+</div>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="category-chain-item">数据结构和算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>链表算法技巧</div>
+      <div>https://th8664484.github.io/2023/02/08/链表算法技巧/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>TONG HUI</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年2月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/10/%E6%95%B0%E7%BB%84%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/" title="数组算法技巧">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数组算法技巧</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/07/%E7%AE%97%E6%B3%95%E6%A0%B8%E5%BF%83%E8%AE%A4%E8%AF%86/" title="算法核心认识">
+                        <span class="hidden-mobile">算法核心认识</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.14.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.14.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://comment-system-gq9ke5wo5-th8664484.vercel.app/","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <link rel="stylesheet" href="//at.alicdn.com/t/font_3028459_b89cc15c2h.css">
+        </div>
+      </div>
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
